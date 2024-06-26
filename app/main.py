@@ -5,10 +5,13 @@ import os
 from io import BytesIO
 import requests
 
-# Configure AWS S3
-region_name = 'ap-south-1'
+# Access secrets from Streamlit Cloud
+AWS_ACCESS_KEY_ID = st.secrets["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY = st.secrets["AWS_SECRET_ACCESS_KEY"]
+region_name = st.secrets["AWS_DEFAULT_REGION"]
 bucket_name = 'excel-integrator-inventory-bucket'
 
+# Configure AWS S3
 s3_client = boto3.client(
     's3',
     region_name=region_name,
